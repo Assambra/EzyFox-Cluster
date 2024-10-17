@@ -1,6 +1,6 @@
 package com.assambra.ezyfoxcluster.plugin.config;
 
-import com.assambra.ezyfoxcluster.plugin.factory.NodeModeStrategyFactory;
+import com.assambra.ezyfoxcluster.plugin.strategy.DefaultNodeModeStrategyFactory;
 import com.assambra.ezyfoxcluster.plugin.strategy.NodeStrategy;
 import com.tvd12.ezyfox.bean.annotation.EzyAutoBind;
 import com.tvd12.ezyfox.bean.annotation.EzyConfigurationBefore;
@@ -15,12 +15,12 @@ import lombok.AllArgsConstructor;
 public class NodeModeStrategyInitializer extends EzyLoggable {
 
     private final NodeConfig nodeConfig;
-    private final NodeModeStrategyFactory nodeModeStrategyFactory;
+    private final DefaultNodeModeStrategyFactory defaultNodeModeStrategyFactory;
 
     @EzyAutoBind
     public void initialize(EzyPluginContext context) {
         logger.info("NodeMode is initializing...");
-        NodeStrategy strategy = nodeModeStrategyFactory.getStrategy(nodeConfig.getNodeMode());
+        NodeStrategy strategy = defaultNodeModeStrategyFactory.getStrategy(nodeConfig.getNodeMode());
         strategy.initialize(context);
     }
 }
