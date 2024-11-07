@@ -1,12 +1,12 @@
-package com.assambra.ezyfoxcluster.plugin.entity;
+package com.assambra.ezyfoxcluster.common.entity;
 
-import com.assambra.ezyfoxcluster.plugin.enums.CommunicationChannel;
-import com.assambra.ezyfoxcluster.plugin.enums.EntityType;
+import com.assambra.ezyfoxcluster.common.enums.CommunicationChannel;
+import com.assambra.ezyfoxcluster.common.enums.EntityType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
+@AllArgsConstructor
 public abstract class BaseEntity {
     protected Long id;
     protected EntityType entityType;

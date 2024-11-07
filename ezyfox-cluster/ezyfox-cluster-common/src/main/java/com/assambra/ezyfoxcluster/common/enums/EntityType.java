@@ -1,4 +1,4 @@
-package com.assambra.ezyfoxcluster.plugin.enums;
+package com.assambra.ezyfoxcluster.common.enums;
 
 public enum EntityType {
     PLAYER,
