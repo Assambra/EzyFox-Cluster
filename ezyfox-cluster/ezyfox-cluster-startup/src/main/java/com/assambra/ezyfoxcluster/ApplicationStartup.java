@@ -18,21 +18,35 @@ import java.nio.file.Paths;
 public class ApplicationStartup {
 
     public static final String ZONE_APP_NAME = "ezyfox-cluster";
+    public static final String PLAYER_COM = "player_com";
+    public static final String ROOM_COM = "room_com";
+    public static final String SERVER_COM = "server_com";
+
 
     public static void main(String[] args) throws Exception {
 
-        EzyPluginSettingBuilder pluginSettingBuilder = new EzyPluginSettingBuilder()
-            .name(ZONE_APP_NAME)
-            .addListenEvent(EzyEventType.USER_LOGIN)
-            .entryLoader(DecoratedPluginEntryLoader.class);
+        EzyAppSettingBuilder playerAppSettingBuilder = new EzyAppSettingBuilder()
+                .name(PLAYER_COM)
+                .entryLoader(DecoratedAppEntryLoader.class);
 
-        EzyAppSettingBuilder appSettingBuilder = new EzyAppSettingBuilder()
-            .name(ZONE_APP_NAME)
-            .entryLoader(DecoratedAppEntryLoader.class);
+        EzyAppSettingBuilder roomAppSettingBuilder = new EzyAppSettingBuilder()
+                .name(ROOM_COM)
+                .entryLoader(DecoratedAppEntryLoader.class);
+
+        EzyAppSettingBuilder serverAppSettingBuilder = new EzyAppSettingBuilder()
+                .name(SERVER_COM)
+                .entryLoader(DecoratedAppEntryLoader.class);
+
+        EzyPluginSettingBuilder pluginSettingBuilder = new EzyPluginSettingBuilder()
+                .name(ZONE_APP_NAME)
+                .addListenEvent(EzyEventType.USER_LOGIN)
+                .entryLoader(DecoratedPluginEntryLoader.class);
 
         EzyZoneSettingBuilder zoneSettingBuilder = new EzyZoneSettingBuilder()
             .name(ZONE_APP_NAME)
-            .application(appSettingBuilder.build())
+            .application(playerAppSettingBuilder.build())
+            .application(roomAppSettingBuilder.build())
+            .application(serverAppSettingBuilder.build())
             .plugin(pluginSettingBuilder.build());
 
         EzySimpleSettings settings = new EzySettingsBuilder()

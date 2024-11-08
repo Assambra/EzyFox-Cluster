@@ -1,7 +1,6 @@
 package com.assambra.ezyfoxcluster.plugin.controller;
 
 import com.assambra.ezyfoxcluster.plugin.service.WelcomeService;
-
 import com.tvd12.ezyfox.bean.annotation.EzyAutoBind;
 import com.tvd12.ezyfox.bean.annotation.EzySingleton;
 import com.tvd12.ezyfox.core.annotation.EzyEventHandler;
@@ -20,6 +19,6 @@ public class UserLoginController extends EzyAbstractPluginEventController<EzyUse
 
     @Override
     public void handle(EzyPluginContext ctx, EzyUserLoginEvent event) {
-        logger.info("{} login in", welcomeService.welcome(event.getUsername()));
+        logger.info("{} login in", event.getUsername());
     }
 }
